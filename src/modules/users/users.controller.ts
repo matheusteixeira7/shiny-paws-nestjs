@@ -14,7 +14,7 @@ import {
   CreateUserUseCase,
   FindAllUsersUseCase,
   FindOneUserUseCase,
-} from '../@core/application/usecases/user';
+} from '../../@core/application/usecases/user';
 
 @Controller('api/v1/users')
 export class UsersController {

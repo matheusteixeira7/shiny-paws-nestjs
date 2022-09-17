@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 
 import { UsersController } from './users.controller';
-import { InMemoryUserRepository } from '../@core/infra/db/in-memory';
-import { UserRepositoryInterface } from '../@core/domain/repositories';
+import { InMemoryUserRepository } from '../../@core/infra/db/in-memory';
+import { UserRepositoryInterface } from '../../@core/domain/repositories';
 import {
   CreateUserUseCase,
   FindAllUsersUseCase,
   FindOneUserUseCase,
-} from '../@core/application/usecases/user';
+} from '../../@core/application/usecases/user';
 
 @Module({
   controllers: [UsersController],
