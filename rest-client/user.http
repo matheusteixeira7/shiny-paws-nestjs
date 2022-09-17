@@ -13,16 +13,19 @@ Content-Type: application/json
 GET http://localhost:8080/api/v1/users
 
 ###
-GET http://localhost:8080/api/v1/users/6def4e62-6bc5-4c77-87a4-d823fb8d8dec
+GET http://localhost:8080/api/v1/users/77f2fad7-2a50-4310-8404-7d7ba6f8a756
 
 ###
-PATCH http://localhost:8080/api/v1/users/8ccb90ee-d5d5-45a0-a8bb-f53cb1af7df7
+PATCH http://localhost:8080/api/v1/users/77f2fad7-2a50-4310-8404-7d7ba6f8a756
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "doe@email.com",
+  "name": "John Foo",
+  "email": "asdasd@email.com",
   "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
-  "password": "123456",
+  "password": "54321",
   "oldPassword": "123456"
 }
+
+###
+DELETE http://localhost:8080/api/v1/users/77f2fad7-2a50-4310-8404-7d7ba6f8a756
