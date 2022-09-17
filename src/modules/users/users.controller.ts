@@ -15,6 +15,7 @@ import {
   FindAllUsersUseCase,
   FindOneUserUseCase,
   UpdateUserUseCase,
+  DeleteUserUseCase,
 } from '../../@core/application/usecases/user';
 
 @Controller('api/v1/users')
@@ -24,6 +25,7 @@ export class UsersController {
     private findAllUsersUseCase: FindAllUsersUseCase,
     private findOneUserUseCase: FindOneUserUseCase,
     private updateUserUseCase: UpdateUserUseCase,
+    private deleteUserUseCase: DeleteUserUseCase,
   ) {}
 
   @Post()
@@ -46,8 +48,8 @@ export class UsersController {
     return this.updateUserUseCase.execute(id, updateUserDto);
   }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.usersService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.deleteUserUseCase.execute({ id });
+  }
 }

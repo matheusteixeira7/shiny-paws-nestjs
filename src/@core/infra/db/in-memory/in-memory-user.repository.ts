@@ -48,7 +48,7 @@ export class InMemoryUserRepository implements UserRepositoryInterface {
     const index = this.items.findIndex((user) => user.id === id);
 
     if (index === -1) {
-      throw new Error('User not found.');
+      throw new Error('User not found');
     }
 
     this.items.splice(index, 1);
