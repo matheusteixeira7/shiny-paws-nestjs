@@ -1,0 +1,13 @@
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "doe@email.com",
+  "password": "123456",
+  "createdAt": "2020-01-01T00:00:00Z",
+  "updatedAt": "2020-01-01T00:00:00Z"
+}
+
+###
+GET http://localhost:8080/api/v1/users
