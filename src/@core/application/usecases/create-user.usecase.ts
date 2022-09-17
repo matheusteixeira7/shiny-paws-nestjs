@@ -18,22 +18,24 @@ export class CreateUserUseCase {
   ) {}
 
   async execute({ name, email, password }: UserProps) {
-    const user = await this.usersRepository.findOneByEmail(email);
+    const userExists = await this.usersRepository.findOneByEmail(email);
 
-    if (user) {
+    if (userExists) {
       throw new Error('User already exists');
     }
 
     const hashedPassword = await new HashHandler().generate(password);
 
-    const newUser = User.create({
+    const user = User.create({
       name,
       email,
       password: hashedPassword,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
-    this.usersRepository.create(newUser);
+    this.usersRepository.create(user);
 
-    return newUser;
+    return user;
   }
 }
