@@ -4,7 +4,6 @@ import { UserRepositoryInterface } from '../../../domain/repositories';
 import { HashHandler } from '../../../infra/gateways';
 
 type UserProps = {
-  id: string;
   name: string;
   email: string;
   avatar?: string;
@@ -13,13 +12,16 @@ type UserProps = {
 };
 
 @injectable()
-export class UpdateUser {
+export class UpdateUserUseCase {
   constructor(
     @inject('InMemoryUsersRepository')
     private usersRepository: UserRepositoryInterface,
   ) {}
 
-  async execute({ id, name, email, password, avatar, oldPassword }: UserProps) {
+  async execute(
+    id: string,
+    { name, email, password, avatar, oldPassword }: UserProps,
+  ) {
     const user = await this.usersRepository.findOneById(id);
 
     if (!user) {
@@ -73,6 +75,6 @@ export class UpdateUser {
 
     this.usersRepository.update(updatedUser);
 
-    return user;
+    return updatedUser;
   }
 }

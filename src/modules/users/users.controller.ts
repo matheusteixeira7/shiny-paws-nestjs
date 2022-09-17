@@ -14,6 +14,7 @@ import {
   CreateUserUseCase,
   FindAllUsersUseCase,
   FindOneUserUseCase,
+  UpdateUserUseCase,
 } from '../../@core/application/usecases/user';
 
 @Controller('api/v1/users')
@@ -22,6 +23,7 @@ export class UsersController {
     private createUserUseCase: CreateUserUseCase,
     private findAllUsersUseCase: FindAllUsersUseCase,
     private findOneUserUseCase: FindOneUserUseCase,
+    private updateUserUseCase: UpdateUserUseCase,
   ) {}
 
   @Post()
@@ -39,10 +41,10 @@ export class UsersController {
     return this.findOneUserUseCase.execute({ id });
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.updateUserUseCase.execute(id, updateUserDto);
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {

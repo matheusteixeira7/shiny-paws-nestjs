@@ -7,6 +7,7 @@ import {
   CreateUserUseCase,
   FindAllUsersUseCase,
   FindOneUserUseCase,
+  UpdateUserUseCase,
 } from '../../@core/application/usecases/user';
 
 @Module({
@@ -34,6 +35,13 @@ import {
       provide: FindOneUserUseCase,
       useFactory: (usersRepository: UserRepositoryInterface) => {
         return new FindOneUserUseCase(usersRepository);
+      },
+      inject: [InMemoryUserRepository],
+    },
+    {
+      provide: UpdateUserUseCase,
+      useFactory: (usersRepository: UserRepositoryInterface) => {
+        return new UpdateUserUseCase(usersRepository);
       },
       inject: [InMemoryUserRepository],
     },
