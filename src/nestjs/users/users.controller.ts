@@ -11,7 +11,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { CreateUserUseCase } from '../@core/application/usecases';
+import { CreateUserUseCase } from '../../@core/application/usecases';
 
 @Controller('api/v1/users')
 export class UsersController {
