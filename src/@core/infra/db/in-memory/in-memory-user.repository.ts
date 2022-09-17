@@ -1,7 +1,7 @@
+import { User } from '../../../domain/entities';
 import { UserRepositoryInterface } from '../../../domain/repositories/user.repository';
-import { User } from '../../../domain/entities/users.entity';
 
-export class InMemoryUsersRepository implements UserRepositoryInterface {
+export class InMemoryUserRepository implements UserRepositoryInterface {
   public items: User[] = [];
 
   async findOneById(id: string): Promise<User | null> {

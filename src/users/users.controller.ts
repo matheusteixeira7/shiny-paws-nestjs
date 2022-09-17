@@ -8,32 +8,36 @@ import {
   Delete,
 } from '@nestjs/common';
 
-import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { CreateUserUseCase } from '../../@core/application/usecases';
+import {
+  CreateUserUseCase,
+  FindAllUsersUseCase,
+  FindOneUserUseCase,
+} from '../@core/application/usecases/user';
 
 @Controller('api/v1/users')
 export class UsersController {
-  // constructor(private readonly usersService: UsersService) {}
-  constructor(private createUserUseCase: CreateUserUseCase) {}
+  constructor(
+    private createUserUseCase: CreateUserUseCase,
+    private findAllUsersUseCase: FindAllUsersUseCase,
+    private findOneUserUseCase: FindOneUserUseCase,
+  ) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    // return this.usersService.create(createUserDto);
     return this.createUserUseCase.execute(createUserDto);
   }
 
   @Get()
   findAll() {
-    // return this.usersService.findAll();
-    return 'this is findAll';
+    return this.findAllUsersUseCase.execute();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOne(+id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.findOneUserUseCase.execute({ id });
+  }
 
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {

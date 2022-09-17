@@ -1,5 +1,5 @@
 import UniqueEntityId from '../value-objects/unique-entity-id';
-import { Customer, Service } from './';
+import { Customer, Service } from '.';
 
 export type TransactionProps = {
   services: Service[];

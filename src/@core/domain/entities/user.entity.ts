@@ -4,6 +4,7 @@ export type UserProps = {
   name: string;
   email: string;
   password: string;
+  avatar?: string;
   createdAt?: Date;
   updatedAt?: Date;
 };
@@ -22,8 +23,8 @@ export class User {
     return new User(props, uniqueId);
   }
 
-  update(props: UserProps) {
-    return User.create(props, this.uniqueId);
+  static update(props: UserProps, id: string) {
+    return new User(props, new UniqueEntityId(id));
   }
 
   get id() {
@@ -56,6 +57,14 @@ export class User {
 
   private set password(value: string) {
     this.props.password = value;
+  }
+
+  get avatar() {
+    return this.props.avatar;
+  }
+
+  private set avatar(value: string) {
+    this.props.avatar = value;
   }
 
   get createdAt() {

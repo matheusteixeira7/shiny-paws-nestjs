@@ -1,13 +1,14 @@
 import { inject, injectable } from 'tsyringe';
 
-import { User } from '../../domain/entities/users.entity';
-import { HashHandler } from '../../infra/gateways/hash-handler';
-import { UserRepositoryInterface } from '../../domain/repositories/user.repository';
+import { User } from '../../../domain/entities';
+import { UserRepositoryInterface } from '../../../domain/repositories';
+import { HashHandler } from '../../../infra/gateways';
 
 type UserProps = {
   name: string;
   email: string;
   password: string;
+  avatar?: string;
 };
 
 @injectable()
@@ -30,6 +31,7 @@ export class CreateUserUseCase {
       name,
       email,
       password: hashedPassword,
+      avatar: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
