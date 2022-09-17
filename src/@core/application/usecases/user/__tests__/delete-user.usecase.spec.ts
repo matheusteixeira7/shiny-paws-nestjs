@@ -15,7 +15,7 @@ describe('Delete user use case', () => {
       sut.execute({
         id: '1',
       }),
-    ).rejects.toThrowError();
+    ).rejects.toThrowError('User not found');
   });
 
   it('should be able to delete a user', async () => {
