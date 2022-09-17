@@ -1,5 +1,3 @@
-import { inject, injectable } from 'tsyringe';
-
 import { User } from '../../../domain/entities';
 import { UserRepositoryInterface } from '../../../domain/repositories';
 import { HashHandler } from '../../../infra/gateways';
@@ -11,12 +9,8 @@ type UserProps = {
   avatar?: string;
 };
 
-@injectable()
 export class CreateUserUseCase {
-  constructor(
-    @inject('InMemoryUsersRepository')
-    private usersRepository: UserRepositoryInterface,
-  ) {}
+  constructor(private usersRepository: UserRepositoryInterface) {}
 
   async execute({ name, email, password }: UserProps) {
     const userExists = await this.usersRepository.findOneByEmail(email);

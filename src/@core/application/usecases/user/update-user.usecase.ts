@@ -1,4 +1,3 @@
-import { inject, injectable } from 'tsyringe';
 import { User } from '../../../domain/entities';
 import { UserRepositoryInterface } from '../../../domain/repositories';
 import { HashHandler } from '../../../infra/gateways';
@@ -11,12 +10,8 @@ type UserProps = {
   oldPassword?: string;
 };
 
-@injectable()
 export class UpdateUserUseCase {
-  constructor(
-    @inject('InMemoryUsersRepository')
-    private usersRepository: UserRepositoryInterface,
-  ) {}
+  constructor(private usersRepository: UserRepositoryInterface) {}
 
   async execute(
     id: string,
