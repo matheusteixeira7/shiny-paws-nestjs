@@ -27,7 +27,7 @@ export class CreatePetUseCase {
       name,
       specie,
       breed,
-      owner: customer,
+      ownerId: customer.id,
     });
 
     this.petRepository.create(pet);
