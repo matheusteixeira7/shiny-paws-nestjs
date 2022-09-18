@@ -5,7 +5,7 @@ import { InMemoryUserRepository } from '../../@core/infra/db/in-memory';
 import { UserRepositoryInterface } from '../../@core/domain/repositories';
 import {
   CreateUserUseCase,
-  DeleteUserUseCase,
+  RemoveUserUseCase,
   FindAllUsersUseCase,
   FindOneUserUseCase,
   UpdateUserUseCase,
@@ -47,9 +47,9 @@ import {
       inject: [InMemoryUserRepository],
     },
     {
-      provide: DeleteUserUseCase,
+      provide: RemoveUserUseCase,
       useFactory: (usersRepository: UserRepositoryInterface) => {
-        return new DeleteUserUseCase(usersRepository);
+        return new RemoveUserUseCase(usersRepository);
       },
       inject: [InMemoryUserRepository],
     },

@@ -4,7 +4,7 @@ type UserProps = {
   id: string;
 };
 
-export class DeleteUserUseCase {
+export class RemoveUserUseCase {
   constructor(private usersRepository: UserRepositoryInterface) {}
 
   async execute({ id }: UserProps) {

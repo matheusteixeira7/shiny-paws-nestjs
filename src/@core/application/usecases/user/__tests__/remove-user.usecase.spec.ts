@@ -1,14 +1,14 @@
 import { User } from '../../../../domain/entities';
 import { InMemoryUserRepository } from '../../../../infra/db/in-memory';
-import { DeleteUserUseCase } from '../';
+import { RemoveUserUseCase } from '../';
 
 let usersRepository: InMemoryUserRepository;
-let sut: DeleteUserUseCase;
+let sut: RemoveUserUseCase;
 
 describe('Delete user use case', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUserRepository();
-    sut = new DeleteUserUseCase(usersRepository);
+    sut = new RemoveUserUseCase(usersRepository);
   });
   it('should throw error if user not found exists', async () => {
     await expect(

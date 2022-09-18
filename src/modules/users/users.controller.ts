@@ -15,7 +15,7 @@ import {
   FindAllUsersUseCase,
   FindOneUserUseCase,
   UpdateUserUseCase,
-  DeleteUserUseCase,
+  RemoveUserUseCase,
 } from '../../@core/application/usecases/user';
 
 @Controller('api/v1/users')
@@ -25,7 +25,7 @@ export class UsersController {
     private findAllUsersUseCase: FindAllUsersUseCase,
     private findOneUserUseCase: FindOneUserUseCase,
     private updateUserUseCase: UpdateUserUseCase,
-    private deleteUserUseCase: DeleteUserUseCase,
+    private deleteUserUseCase: RemoveUserUseCase,
   ) {}
 
   @Post()
