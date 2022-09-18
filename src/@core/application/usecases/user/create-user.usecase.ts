@@ -2,7 +2,7 @@ import { User } from '../../../domain/entities';
 import { UserRepositoryInterface } from '../../../domain/repositories';
 import { HashHandler } from '../../../infra/gateways';
 
-type UserProps = {
+type UserDto = {
   name: string;
   email: string;
   password: string;
@@ -12,7 +12,7 @@ type UserProps = {
 export class CreateUserUseCase {
   constructor(private usersRepository: UserRepositoryInterface) {}
 
-  async execute({ name, email, password }: UserProps) {
+  async execute({ name, email, password }: UserDto) {
     const userExists = await this.usersRepository.findOneByEmail(email);
 
     if (userExists) {
