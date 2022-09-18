@@ -1,10 +1,10 @@
 import { Customer } from '../entities/customer.entity';
 
-export interface CustomersRepository {
-  fineOneById(id: string): Promise<Customer | null>;
-  findOneByEmail(email: string): Promise<Customer | null>;
+export interface CustomerRepositoryInterface {
   create(customer: Customer): Promise<Customer>;
-  update(customer: Customer): Promise<Customer>;
-  delete(id: string): Promise<void>;
   findAll(): Promise<Customer[]>;
+  findOneByEmail(email: string): Promise<Customer | null>;
+  findOneById(id: string): Promise<Customer | null>;
+  remove(id: string): Promise<void>;
+  update(customer: Customer): Promise<Customer>;
 }

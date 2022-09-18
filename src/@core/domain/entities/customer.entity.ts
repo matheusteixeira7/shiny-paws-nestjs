@@ -1,10 +1,12 @@
 import UniqueEntityId from '../value-objects/unique-entity-id';
+import { Pet } from '.';
 
 export type CustomerProps = {
   name: string;
   email: string;
   phone: string;
   address: string;
+  pets?: Pet[];
   createdAt?: Date;
   updatedAt?: Date;
 };
