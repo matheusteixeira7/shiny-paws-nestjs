@@ -20,7 +20,7 @@ describe('Delete user use case', () => {
 
   it('should be able to delete a user', async () => {
     const user = User.create({
-      name: 'Diego',
+      name: 'John Doe',
       email: 'doe@example.com',
       password: '123456',
     });
