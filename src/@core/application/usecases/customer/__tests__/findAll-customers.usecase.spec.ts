@@ -5,7 +5,7 @@ let customerRepository: InMemoryCustomerRepository;
 let createCustomerUseCase: CreateCustomerUseCase;
 let sut: FindAllCustomersUseCase;
 
-describe('List customers use case', () => {
+describe('Find all customers use case', () => {
   beforeEach(() => {
     customerRepository = new InMemoryCustomerRepository();
     createCustomerUseCase = new CreateCustomerUseCase(customerRepository);
