@@ -1,33 +1,30 @@
 import { User } from '../../../../domain/entities';
 import { InMemoryUserRepository } from '../../../../infra/db/in-memory';
-import { FindAllUsersUseCase } from '..';
+import { CreateUserUseCase, FindAllUsersUseCase } from '..';
 
 let usersRepository: InMemoryUserRepository;
+let createUserUseCase: CreateUserUseCase;
 let sut: FindAllUsersUseCase;
 
 describe('List user use case', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUserRepository();
+    createUserUseCase = new CreateUserUseCase(usersRepository);
     sut = new FindAllUsersUseCase(usersRepository);
   });
   it('should be able to list users', async () => {
-    const user1 = User.create({
-      name: 'Diego',
-      email: 'doe@example.com',
+    await createUserUseCase.execute({
+      name: 'John Doe',
+      email: 'john@example.com',
       password: '123456',
     });
 
-    const user2 = User.create({
-      name: 'Matheus',
-      email: 'doe@example.com',
+    await createUserUseCase.execute({
+      name: 'Jane Doe',
+      email: 'jane@example.com',
       password: '123456',
     });
 
-    await usersRepository.create(user1);
-    await usersRepository.create(user2);
-
-    const users = await sut.execute();
-
-    expect(users).toHaveLength(2);
+    await expect(sut.execute()).resolves.toHaveLength(2);
   });
 });
