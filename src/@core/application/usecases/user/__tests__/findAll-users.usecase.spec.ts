@@ -1,4 +1,3 @@
-import { User } from '../../../../domain/entities';
 import { InMemoryUserRepository } from '../../../../infra/db/in-memory';
 import { CreateUserUseCase, FindAllUsersUseCase } from '..';
 
@@ -6,7 +5,7 @@ let usersRepository: InMemoryUserRepository;
 let createUserUseCase: CreateUserUseCase;
 let sut: FindAllUsersUseCase;
 
-describe('List user use case', () => {
+describe('FindAllUsersUseCase', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUserRepository();
     createUserUseCase = new CreateUserUseCase(usersRepository);
