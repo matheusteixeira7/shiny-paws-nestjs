@@ -1,10 +1,11 @@
+import { Customer } from '.';
 import UniqueEntityId from '../value-objects/unique-entity-id';
 
 export type PetProps = {
   name: string;
   specie: string;
   breed: string;
-  ownerId: string;
+  owner: Customer;
   createdAt?: Date;
   updatedAt?: Date;
 };
@@ -59,12 +60,12 @@ export class Pet {
     this.props.breed = value;
   }
 
-  get ownerId() {
-    return this.props.ownerId;
+  get owner() {
+    return this.props.owner;
   }
 
-  private set ownerId(value: string) {
-    this.props.ownerId = value;
+  private set owner(value: Customer) {
+    this.props.owner = value;
   }
 
   get createdAt() {
