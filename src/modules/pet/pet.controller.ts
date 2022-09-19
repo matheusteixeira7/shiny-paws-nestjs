@@ -11,19 +11,17 @@ import { CreatePetUseCase } from '../../@core/application/usecases/pet';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
 
-@Controller('pet')
+@Controller('api/v1/pets')
 export class PetController {
   constructor(private readonly createPetUseCase: CreatePetUseCase) {}
 
-  @Post()
+  @Post(':id')
   create(@Param('id') id: string, @Body() createPetDto: CreatePetDto) {
     return this.createPetUseCase.execute(id, createPetDto);
   }
 
   // @Get()
-  // findAll() {
-  //   return this.petService.findAll();
-  // }
+  // findAll() {}
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
