@@ -7,7 +7,7 @@ let sut: RemoveUserUseCase;
 
 describe('Delete user use case', () => {
   beforeEach(() => {
-    usersRepository = new InMemoryUserRepository();
+    usersRepository = InMemoryUserRepository.getInstance();
     sut = new RemoveUserUseCase(usersRepository);
   });
   it('should throw error if user not found exists', async () => {

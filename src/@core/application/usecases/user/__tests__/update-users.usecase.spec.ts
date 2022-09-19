@@ -7,7 +7,8 @@ let sut: UpdateUserUseCase;
 
 describe('UpdateUserUseCase', () => {
   beforeEach(() => {
-    usersRepository = new InMemoryUserRepository();
+    usersRepository = InMemoryUserRepository.getInstance();
+    usersRepository.clear();
     createUserUseCase = new CreateUserUseCase(usersRepository);
     sut = new UpdateUserUseCase(usersRepository);
   });

@@ -6,7 +6,7 @@ let sut: CreateUserUseCase;
 
 describe('Create user use case', () => {
   beforeEach(() => {
-    usersRepository = new InMemoryUserRepository();
+    usersRepository = InMemoryUserRepository.getInstance();
     sut = new CreateUserUseCase(usersRepository);
   });
   it('should throw error if user already exists', async () => {

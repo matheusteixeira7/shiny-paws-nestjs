@@ -7,7 +7,7 @@ let sut: FindOneUserUseCase;
 
 describe('FindOneUserUseCase', () => {
   beforeEach(() => {
-    usersRepository = new InMemoryUserRepository();
+    usersRepository = InMemoryUserRepository.getInstance();
     createUserUseCase = new CreateUserUseCase(usersRepository);
     sut = new FindOneUserUseCase(usersRepository);
   });
