@@ -16,7 +16,7 @@ import {
   providers: [
     {
       provide: InMemoryUserRepository,
-      useClass: InMemoryUserRepository,
+      useValue: InMemoryUserRepository.getInstance(),
     },
     {
       provide: CreateUserUseCase,

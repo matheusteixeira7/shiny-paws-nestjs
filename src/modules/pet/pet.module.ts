@@ -16,7 +16,7 @@ import { FindAllCustomersUseCase } from '../../@core/application/usecases/custom
   providers: [
     {
       provide: InMemoryPetRepository,
-      useClass: InMemoryPetRepository,
+      useValue: InMemoryPetRepository.getInstance(),
     },
     {
       provide: InMemoryCustomerRepository,
