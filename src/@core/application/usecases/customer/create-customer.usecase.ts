@@ -23,7 +23,6 @@ export class CreateCustomerUseCase {
       email,
       phone,
       address,
-      pets: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
