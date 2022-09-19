@@ -2,7 +2,21 @@ import { Customer } from '../../../domain/entities';
 import { CustomerRepositoryInterface } from './../../../domain/repositories';
 
 export class InMemoryCustomerRepository implements CustomerRepositoryInterface {
-  public items: Customer[] = [];
+  public items: Customer[];
+
+  private static INSTANCE: InMemoryCustomerRepository;
+
+  private constructor() {
+    this.items = [];
+  }
+
+  public static getInstance(): InMemoryCustomerRepository {
+    if (!InMemoryCustomerRepository.INSTANCE) {
+      InMemoryCustomerRepository.INSTANCE = new InMemoryCustomerRepository();
+    }
+
+    return InMemoryCustomerRepository.INSTANCE;
+  }
 
   async findOneById(id: string): Promise<Customer> {
     const customer = this.items.find((customer) => customer.id === id);
