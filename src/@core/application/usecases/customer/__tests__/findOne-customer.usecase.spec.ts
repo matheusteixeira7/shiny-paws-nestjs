@@ -7,7 +7,7 @@ let sut: FindOneCustomerUseCase;
 
 describe('Find one customer use case', () => {
   beforeEach(() => {
-    customerRepository = new InMemoryCustomerRepository();
+    customerRepository = InMemoryCustomerRepository.getInstance();
     createCustomerUseCase = new CreateCustomerUseCase(customerRepository);
     sut = new FindOneCustomerUseCase(customerRepository);
   });
