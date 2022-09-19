@@ -15,7 +15,7 @@ import { CustomerController } from './customer.controller';
   providers: [
     {
       provide: InMemoryCustomerRepository,
-      useClass: InMemoryCustomerRepository,
+      useValue: InMemoryCustomerRepository.getInstance(),
     },
     {
       provide: CreateCustomerUseCase,
@@ -53,5 +53,6 @@ import { CustomerController } from './customer.controller';
       inject: [InMemoryCustomerRepository],
     },
   ],
+  exports: [InMemoryCustomerRepository],
 })
 export class CustomerModule {}
