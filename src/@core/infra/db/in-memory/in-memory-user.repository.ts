@@ -2,7 +2,21 @@ import { User } from '../../../domain/entities';
 import { UserRepositoryInterface } from '../../../domain/repositories/user.repository';
 
 export class InMemoryUserRepository implements UserRepositoryInterface {
-  public items: User[] = [];
+  public items: User[];
+
+  private static INSTANCE: InMemoryUserRepository;
+
+  private constructor() {
+    this.items = [];
+  }
+
+  public static getInstance(): InMemoryUserRepository {
+    if (!InMemoryUserRepository.INSTANCE) {
+      InMemoryUserRepository.INSTANCE = new InMemoryUserRepository();
+    }
+
+    return InMemoryUserRepository.INSTANCE;
+  }
 
   async findOneById(id: string): Promise<User | null> {
     const user = this.items.find((user) => user.id === id);

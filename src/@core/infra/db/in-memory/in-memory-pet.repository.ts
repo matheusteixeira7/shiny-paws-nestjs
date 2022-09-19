@@ -2,7 +2,21 @@ import { Pet } from '../../../domain/entities';
 import { PetRepositoryInterface } from '../../../domain/repositories';
 
 export class InMemoryPetRepository implements PetRepositoryInterface {
-  public items: Pet[] = [];
+  public items: Pet[];
+
+  private static INSTANCE: InMemoryPetRepository;
+
+  private constructor() {
+    this.items = [];
+  }
+
+  public static getInstance(): InMemoryPetRepository {
+    if (!InMemoryPetRepository.INSTANCE) {
+      InMemoryPetRepository.INSTANCE = new InMemoryPetRepository();
+    }
+
+    return InMemoryPetRepository.INSTANCE;
+  }
 
   async findOneById(id: string): Promise<Pet> {
     const pet = this.items.find((pet) => pet.id === id);
