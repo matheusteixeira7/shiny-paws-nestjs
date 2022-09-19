@@ -71,4 +71,8 @@ export class InMemoryUserRepository implements UserRepositoryInterface {
   async findAll(): Promise<User[]> {
     return this.items;
   }
+
+  clear(): void {
+    this.items = [];
+  }
 }

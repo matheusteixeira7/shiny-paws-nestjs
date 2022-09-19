@@ -67,4 +67,8 @@ export class InMemoryPetRepository implements PetRepositoryInterface {
   async findAll(): Promise<Pet[]> {
     return this.items;
   }
+
+  clear(): void {
+    this.items = [];
+  }
 }

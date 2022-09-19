@@ -67,4 +67,8 @@ export class InMemoryCustomerRepository implements CustomerRepositoryInterface {
   async findAll(): Promise<Customer[]> {
     return this.items;
   }
+
+  clear(): void {
+    this.items = [];
+  }
 }
