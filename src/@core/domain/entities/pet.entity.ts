@@ -23,8 +23,8 @@ export class Pet {
     return new Pet(props, uniqueId);
   }
 
-  update(props: PetProps) {
-    return Pet.create(props, this.uniqueId);
+  static update(props: PetProps, id: string) {
+    return new Pet(props, new UniqueEntityId(id));
   }
 
   get id() {
