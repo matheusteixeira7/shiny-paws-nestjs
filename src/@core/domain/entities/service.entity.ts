@@ -21,8 +21,8 @@ export class Service {
     return new Service(props, uniqueId);
   }
 
-  update(props: ServiceProps) {
-    return Service.create(props, this.uniqueId);
+  static update(props: ServiceProps, id: string) {
+    return new Service(props, new UniqueEntityId(id));
   }
 
   get id() {
