@@ -5,7 +5,7 @@ let serviceRepository: InMemoryServiceRepository;
 let createServiceUseCase: CreateServiceUseCase;
 let sut: FindAllServicesUseCase;
 
-describe('Find all pets use case', () => {
+describe('Find all services use case', () => {
   beforeEach(() => {
     serviceRepository = InMemoryServiceRepository.getInstance();
     serviceRepository.items = [];
