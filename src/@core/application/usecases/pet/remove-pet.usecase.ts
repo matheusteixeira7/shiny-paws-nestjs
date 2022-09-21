@@ -1,10 +1,9 @@
-import { Pet } from '../../../domain/entities';
 import { PetRepositoryInterface } from '../../../domain/repositories';
 
 export class RemovePetUseCase {
   constructor(private petRepository: PetRepositoryInterface) {}
 
-  async execute(id: string): Promise<Pet> {
+  async execute(id: string): Promise<void> {
     const pet = await this.petRepository.findOneById(id);
 
     if (!pet) {
@@ -12,7 +11,5 @@ export class RemovePetUseCase {
     }
 
     await this.petRepository.remove(pet.id);
-
-    return pet;
   }
 }
