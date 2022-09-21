@@ -44,6 +44,6 @@ describe('Remove pet use case', () => {
       breed: 'pitbull',
     });
 
-    await expect(sut.execute(pet.id)).resolves.toEqual(pet);
+    await expect(sut.execute(pet.id)).resolves.toBeUndefined();
   });
 });
