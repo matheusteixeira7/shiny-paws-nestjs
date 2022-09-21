@@ -3,7 +3,13 @@ import {
   PetRepositoryInterface,
 } from './../../@core/domain/repositories';
 import { Module } from '@nestjs/common';
-import { CreatePetUseCase } from '../../@core/application/usecases/pet';
+import {
+  CreatePetUseCase,
+  FindAllPetsUseCase,
+  FindOnePetUseCase,
+  RemovePetUseCase,
+  UpdatePetUseCase,
+} from '../../@core/application/usecases/pet';
 import {
   InMemoryCustomerRepository,
   InMemoryPetRepository,
@@ -38,6 +44,37 @@ import { FindAllCustomersUseCase } from '../../@core/application/usecases/custom
         return new FindAllCustomersUseCase(customerRepository);
       },
       inject: [InMemoryCustomerRepository],
+    },
+    {
+      provide: FindAllPetsUseCase,
+      useFactory: (petRepository: PetRepositoryInterface) => {
+        return new FindAllPetsUseCase(petRepository);
+      },
+      inject: [InMemoryPetRepository],
+    },
+    {
+      provide: FindOnePetUseCase,
+      useFactory: (petRepository: PetRepositoryInterface) => {
+        return new FindOnePetUseCase(petRepository);
+      },
+      inject: [InMemoryPetRepository],
+    },
+    {
+      provide: UpdatePetUseCase,
+      useFactory: (
+        petRepository: PetRepositoryInterface,
+        customerRepository: CustomerRepositoryInterface,
+      ) => {
+        return new UpdatePetUseCase(petRepository, customerRepository);
+      },
+      inject: [InMemoryPetRepository, InMemoryCustomerRepository],
+    },
+    {
+      provide: RemovePetUseCase,
+      useFactory: (petRepository: PetRepositoryInterface) => {
+        return new RemovePetUseCase(petRepository);
+      },
+      inject: [InMemoryPetRepository],
     },
   ],
 })
