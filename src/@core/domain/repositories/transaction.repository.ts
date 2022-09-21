@@ -1,9 +1,9 @@
-import { Transaction } from '../entities/transaction.entity';
+import { Customer, Pet, Service, Transaction } from '../entities';
 
-export interface TransactionsRepository {
-  fineOneById(id: string): Promise<Transaction | null>;
-  create(customer: Transaction): Promise<Transaction>;
-  update(customer: Transaction): Promise<Transaction>;
+export interface TransactionRepositoryInterface {
+  create(transaction: Transaction): Promise<Transaction>;
   findAll(): Promise<Transaction[]>;
-  delete(id: string): Promise<void>;
+  findOneById(id: string): Promise<Transaction | null>;
+  remove(id: string): Promise<void>;
+  update(transaction: Transaction): Promise<Transaction>;
 }

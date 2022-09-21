@@ -1,11 +1,12 @@
 import UniqueEntityId from '../value-objects/unique-entity-id';
-import { Customer, Service } from '.';
+import { Customer, Pet, Service } from '.';
 
 export type TransactionProps = {
-  services: Service[];
-  totalPrice: number;
-  isPaid: boolean;
   customer: Customer;
+  pets: Pet[];
+  services: Service[];
+  isPaid: boolean;
+  totalPrice: number;
   createdAt?: Date;
   updatedAt?: Date;
 };
@@ -58,6 +59,22 @@ export class Transaction {
 
   private set customer(value: Customer) {
     this.props.customer = value;
+  }
+
+  get services() {
+    return this.props.services;
+  }
+
+  private set services(value: Service[]) {
+    this.props.services = value;
+  }
+
+  get pets() {
+    return this.props.pets;
+  }
+
+  private set pets(value: Pet[]) {
+    this.props.pets = value;
   }
 
   get createdAt() {
