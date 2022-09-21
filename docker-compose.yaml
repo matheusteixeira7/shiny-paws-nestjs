@@ -5,7 +5,7 @@ services:
     build: .
     command: wait-for db:5432 -t 40 -- ./start.sh
     ports:
-      - 8000:3333
+      - 8080:8080
     volumes:
       - .:/usr/app
     depends_on:
@@ -17,7 +17,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: todo_db
+      POSTGRES_DB: shiny-paws_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
