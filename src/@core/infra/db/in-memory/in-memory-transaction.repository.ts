@@ -42,6 +42,7 @@ export class InMemoryTransactionRepository
 
     return transaction;
   }
+
   async update(transaction: Transaction): Promise<Transaction> {
     const findIndex = this.items.findIndex(
       (item) => item.id === transaction.id,
@@ -53,6 +54,7 @@ export class InMemoryTransactionRepository
 
     return transaction;
   }
+
   async remove(id: string): Promise<void> {
     const index = this.items.findIndex((transaction) => transaction.id === id);
 
@@ -62,6 +64,7 @@ export class InMemoryTransactionRepository
 
     this.items.splice(index, 1);
   }
+
   async findAll(): Promise<Transaction[]> {
     return this.items;
   }
