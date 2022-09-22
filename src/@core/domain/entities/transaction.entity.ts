@@ -25,8 +25,8 @@ export class Transaction {
     return new Transaction(props, uniqueId);
   }
 
-  update(props: TransactionProps) {
-    return Transaction.create(props, this.uniqueId);
+  static update(props: TransactionProps, id: string) {
+    return new Transaction(props, new UniqueEntityId(id));
   }
 
   get id() {
